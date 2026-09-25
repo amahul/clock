@@ -109,16 +109,6 @@ body {
   font-size: clamp(1rem, 4.5vw, 1.6rem);
 }
 
-.clock-status {
-  margin: 0.75rem 0 0;
-  padding: 0.2rem 0.7rem;
-  border: 1px solid var(--faint);
-  border-radius: 999px;
-  color: var(--muted);
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-}
-
 .clock-offline {
   position: fixed;
   left: max(1rem, env(safe-area-inset-left));

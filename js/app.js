@@ -4,7 +4,6 @@ import {
   DEFAULT_TIMEZONE,
   displayedTime,
   parseState,
-  describeSpeed,
   estimateOffset,
   toMs,
 } from './clock-core.js';
@@ -208,7 +207,6 @@ async function measureOffset() {
 const clockEl = document.querySelector('.clock');
 const digitalEl = document.getElementById('digital-time');
 const dateEl = document.getElementById('clock-date');
-const statusEl = document.getElementById('clock-status');
 const offlineEl = document.getElementById('clock-offline');
 const hourHand = document.getElementById('hand-hour');
 const minuteHand = document.getElementById('hand-minute');
@@ -272,10 +270,6 @@ function render() {
     setText(digitalEl, `${pad(hour)}:${pad(minute)}:${pad(second)}`);
   }
   setText(dateEl, getFormatters(current.timezone).date.format(shownMs));
-
-  const speedLabel = describeSpeed(current.speed);
-  statusEl.hidden = speedLabel === null;
-  if (speedLabel !== null) setText(statusEl, speedLabel);
 
   offlineEl.hidden = online;
   if (!online) setText(offlineEl, state ? 'Offline · last known settings' : 'Offline · showing real time');
