@@ -1,0 +1,22 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+.claude/settings.local.json
+
+# Site folder assembled by the Pages workflow
+_site/
+
+# Node (only used to run tests)
+node_modules/
+npm-debug.log*
+
+# Local secrets. The Supabase anon key is public by design,
+# but never commit a service_role key or other private config.
+.env
+.env.*
+*.local.js

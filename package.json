@@ -1,0 +1,9 @@
+{
+  "name": "timer",
+  "private": true,
+  "description": "Static clock website whose time and speed are controlled by an admin, synced via Supabase.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

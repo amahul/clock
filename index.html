@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d10">
+  <title>Clock</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <main class="clock" data-view="digital">
+    <div class="face face-digital">
+      <time id="digital-time" class="digital-time">--:--:--</time>
+    </div>
+
+    <div class="face face-analog">
+      <svg class="analog" viewBox="-100 -100 200 200" role="img" aria-labelledby="analog-label">
+        <title id="analog-label">Analog clock</title>
+        <circle class="analog-rim" r="96"></circle>
+        <g id="analog-ticks"></g>
+        <line id="hand-hour" class="hand hand-hour" x1="0" y1="10" x2="0" y2="-50"></line>
+        <line id="hand-minute" class="hand hand-minute" x1="0" y1="12" x2="0" y2="-74"></line>
+        <line id="hand-second" class="hand hand-second" x1="0" y1="18" x2="0" y2="-82"></line>
+        <circle class="analog-pin" r="3.5"></circle>
+      </svg>
+    </div>
+
+    <p id="clock-date" class="clock-date"></p>
+    <p id="clock-status" class="clock-status" hidden></p>
+  </main>
+
+  <p id="clock-offline" class="clock-offline" role="status" hidden>Offline</p>
+
+  <button id="view-toggle" class="view-toggle" type="button" aria-label="Switch to analog clock">
+    Analog
+  </button>
+</body>
+</html>

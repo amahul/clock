@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0b0d10">
+  <title>Clock admin</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script type="module" src="js/admin.js"></script>
+</head>
+<body class="admin">
+  <main class="admin-main">
+    <header class="admin-header">
+      <h1>Clock admin</h1>
+      <div id="session" class="session" hidden>
+        <span id="session-email" class="session-email"></span>
+        <button id="logout" type="button" class="button button-quiet">Log out</button>
+      </div>
+    </header>
+
+    <p id="loading" class="notice">Loading…</p>
+
+    <section id="login" class="panel" hidden>
+      <h2>Log in</h2>
+      <form id="login-form" class="stack">
+        <label class="field">
+          <span>Username or email</span>
+          <input id="login-email" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="login-password" type="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit" class="button button-primary">Log in</button>
+      </form>
+    </section>
+
+    <p id="not-admin" class="notice notice-error" hidden>
+      This account is not an admin. Its email must be listed in the
+      <code>admins</code> table in Supabase.
+    </p>
+
+    <div id="controls" class="controls" hidden>
+      <section class="panel preview-panel">
+        <h2>What visitors see</h2>
+        <div class="preview">
+          <iframe src="index.html" title="Visitor view of the clock"></iframe>
+        </div>
+        <p id="current-state" class="current-state"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Speed</h2>
+        <p class="hint">Applies immediately. The clock continues from its current time.</p>
+        <div class="presets" role="group" aria-label="Speed presets">
+          <button type="button" class="button" data-speed="0">Pause</button>
+          <button type="button" class="button" data-speed="0.5">0.5×</button>
+          <button type="button" class="button" data-speed="1">1×</button>
+          <button type="button" class="button" data-speed="2">2×</button>
+          <button type="button" class="button" data-speed="10">10×</button>
+          <button type="button" class="button" data-speed="60">60×</button>
+        </div>
+        <label class="field">
+          <span>Slider: <output id="speed-slider-value" for="speed-slider"></output></span>
+          <input id="speed-slider" type="range" min="0" step="1">
+        </label>
+        <form id="speed-form" class="inline-form">
+          <label class="field">
+            <span>Custom speed (negative runs backwards)</span>
+            <input id="speed-input" type="number" step="any" inputmode="decimal" required>
+          </label>
+          <button type="submit" class="button">Apply</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Time and timezone</h2>
+        <form id="time-form" class="stack">
+          <label class="field">
+            <span>Date and time, in the selected timezone</span>
+            <input id="time-input" type="datetime-local" step="1">
+          </label>
+          <label class="field">
+            <span>Timezone</span>
+            <select id="timezone-select"></select>
+          </label>
+          <p class="hint">
+            If you only change the timezone, the clock keeps its current time.
+          </p>
+          <div class="button-row">
+            <button type="submit" class="button button-primary">Save</button>
+            <button id="time-revert" type="button" class="button button-quiet">Undo changes</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Reset</h2>
+        <p class="hint">Back to real time at 1× speed. The timezone is kept.</p>
+        <button id="reset" type="button" class="button">Reset to real time</button>
+      </section>
+    </div>
+  </main>
+
+  <p id="message" class="message" role="status" aria-live="polite" hidden></p>
+</body>
+</html>
